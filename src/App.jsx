@@ -1,3 +1,4 @@
+import { useState } from "react";
 function Header() {
   return(<header>
     <a href="#">Home</a> | <a href="#posts-index">All posts</a> | <a href="#posts-new">New post</a>
@@ -21,7 +22,8 @@ function PostNew() {
 </div>);
 }
 
-function PostIndex() {
+function PostIndex(props) {
+  console.log(props);
   return(<div id="posts-index">
   <h1>All posts</h1>
   <div className="posts"/>
@@ -39,6 +41,40 @@ function Footer() {
 }
 
 
+function Content() {
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      title: "___",
+      body: "___",
+      image: "___",
+    },
+    {
+      id: 2,
+      title: "___",
+      body: "___",
+      image: "___",
+    },
+    {
+      id: 3,
+      title: "___",
+      body: "___",
+      image: "___",
+    },
+  ]);
+
+
+  return (
+    <div>
+      <PostNew />
+      <PostIndex posts={posts} />
+    </div>
+  );
+}
+
+
+
+
 function App() {
   return (
     <div>
@@ -49,13 +85,6 @@ function App() {
   );
 }
 
-function Content() {
-  return (
-    <div>
-      <PostNew />
-      <PostIndex />
-    </div>
-  );
-}
+
 
 export default App;
