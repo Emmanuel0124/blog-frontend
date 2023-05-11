@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 function Header() {
   return(<header>
     <a href="#">Home</a> | <a href="#posts-index">All posts</a> | <a href="#posts-new">New post</a>
@@ -45,31 +47,25 @@ function Footer() {
 
 
 function Content() {
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      title: "Cooked food",
-      content: "I made a burger today",
-      author: "mike",
-    },
-    {
-      id: 2,
-      title: "Bought flowers",
-      content: "Today I got violets from the floriest",
-      author: "lura",
-    },
-    {
-      id: 3,
-      title: "I like water",
-      content: "Water is good for hydration",
-      author: "tim",
-    },
-  ]);
+  const [posts, setPosts] = useState([])
 
+  const handleIndexPosts = () => {
+    console.log('in handle index posts')
+    // make my web request to api
+    axios.get('http://localhost:3000/posts.json').then(response => {
+      console.log(response.data);
+      // posts = response.data
+      setPosts(response.data);
+
+    })
+  }
+
+  useEffect(handleIndexPosts, [])
 
   return (
     <div>
       <PostNew />
+      <button onClick={handleIndexPosts}>Get data</button>
       <PostIndex posts={posts} />
     </div>
   );
