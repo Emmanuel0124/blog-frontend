@@ -26,11 +26,14 @@ function PostIndex(props) {
   console.log(props);
   return(<div id="posts-index">
   <h1>All posts</h1>
-  <div className="posts"/>
-    <h2>Mud Pie</h2>
-    <p>content: i made a mud pie today</p>
-    <p>author: Jay Wengrow</p>
-    <button>More info</button>
+  {props.posts.map(post => (
+  <div key={post.id} className="posts">
+    <h2>{post.title}</h2>
+          <p>content: {post.content}</p>
+          <p>Author: {post.author}</p>
+          <button>More info</button>
+  </div>
+  ))}
 </div>);
 }
 
@@ -45,21 +48,21 @@ function Content() {
   const [posts, setPosts] = useState([
     {
       id: 1,
-      title: "___",
-      body: "___",
-      image: "___",
+      title: "Cooked food",
+      content: "I made a burger today",
+      author: "mike",
     },
     {
       id: 2,
-      title: "___",
-      body: "___",
-      image: "___",
+      title: "Bought flowers",
+      content: "Today I got violets from the floriest",
+      author: "lura",
     },
     {
       id: 3,
-      title: "___",
-      body: "___",
-      image: "___",
+      title: "I like water",
+      content: "Water is good for hydration",
+      author: "tim",
     },
   ]);
 
