@@ -14,6 +14,9 @@ export function Content() {
 
   const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
 
+  const [currentPost, setCurrentPost] = useState({});
+
+
   const handleIndexPosts = () => {
     console.log('in handle index posts');
     // make my web request to api
@@ -27,9 +30,11 @@ export function Content() {
 
   useEffect(handleIndexPosts, []);
 
-  const handleShowPost = () => {
+  const handleShowPost = (post) => {
+    console.log(post);
     console.log("handling show post.eventually this will change the value of isPostVisible")
     setIsPostsShowVisible(true);
+    setCurrentPost(post)
   };
 
   const handleClose = () => {
@@ -47,8 +52,8 @@ export function Content() {
       <PostIndex posts={posts} onShowPost={handleShowPost}/>
       <Modal show={isPostsShowVisible} onClose={handleClose}>
         
-        <p>TEST</p>
-        <p>Hello there from modal</p>
+       <h2>Title: {currentPost.title}</h2>
+       <h2>Content: {currentPost.body}</h2>
       </Modal>
     </div>
   );
