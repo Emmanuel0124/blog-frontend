@@ -7,7 +7,7 @@ export function PostIndex(props) {
         <h2>{post.title}</h2>
         <p>content: {post.content}</p>
         <p>Author: {post.author}</p>
-        <button>More info</button>
+        <button onClick={props.onShowPost}>More info</button>
       </div>
     ))}
   </div>);
