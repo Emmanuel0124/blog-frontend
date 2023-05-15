@@ -5,3 +5,11 @@
 html {
   scroll-behavior: smooth;
 }
+
+#root {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#root {
+  background-color: lavender;
+}
