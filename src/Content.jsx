@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { PostNew } from "./PostNew";
 import { PostIndex } from "./PostIndex";
+import { PostShow } from "./PostShow";
 import { Modal } from "./Modal";
-
-
-
+import { Signup } from "./Signup";
 
 
 
@@ -47,13 +46,13 @@ export function Content() {
 
   return (
     <div>
+      <Signup/>
       <PostNew />
       <button onClick={handleIndexPosts}>Get data</button>
       <PostIndex posts={posts} onShowPost={handleShowPost}/>
       <Modal show={isPostsShowVisible} onClose={handleClose}>
-        
-       <h2>Title: {currentPost.title}</h2>
-       <h2>Content: {currentPost.body}</h2>
+      <PostShow post={currentPost}/>
+      
       </Modal>
     </div>
   );
