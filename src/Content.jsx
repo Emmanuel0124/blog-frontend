@@ -5,6 +5,8 @@ import { PostIndex } from "./PostIndex";
 import { PostShow } from "./PostShow";
 import { Modal } from "./Modal";
 import { Signup } from "./Signup";
+import { Login } from "./Login";
+import { LogoutLink } from "./LogoutLink";
 
 
 
@@ -48,6 +50,8 @@ export function Content() {
     <div>
       <Signup/>
       <PostNew />
+      <Login />
+      <LogoutLink />
       <button onClick={handleIndexPosts}>Get data</button>
       <PostIndex posts={posts} onShowPost={handleShowPost}/>
       <Modal show={isPostsShowVisible} onClose={handleClose}>
